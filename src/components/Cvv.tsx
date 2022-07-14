@@ -25,7 +25,10 @@ const Cvv: React.SFC<FramesFieldProps> = (props) => {
             value={state.cvv}
             maxLength={state.cvvLength}
             onChangeText={(val: string) =>
-              dispatch({ type: CVV_CHANGE, payload: val })
+              { 
+              props.removeError("CVV");
+              dispatch({ type: CVV_CHANGE, payload: val }) 
+              }
             }
           />
         );
