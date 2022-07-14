@@ -18,7 +18,20 @@ const SubmitButton: React.FunctionComponent<SubmitButtonProps> = (props) => {
             {...touchableProps}
             style={[styles.buttonContainer, touchableProps.style]}
             onPress={(e) => {
-              submitCard();
+              if(_a.state.cardNumber != null && _a.state.expiryDate != null && _a.state.cvv != null ){
+                submitCard();
+            }else{
+               if(_a.state.cardNumber == null){
+                    props.showError("CARD")
+               }
+               if(_a.state.expiryDate == null){
+                    props.showError("EXPIRY")
+               }
+               if(_a.state.cvv == null){
+                props.showError("CVV")
+               }
+                return 
+            }
               if (props.onPress) props.onPress(e);
             }}
           >
